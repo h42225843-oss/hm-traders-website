@@ -1,672 +1,215 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>H.M Traders — Wholesale &amp; Retail Bottle Suppliers, Kasur</title>
-<meta name="description" content="H.M Traders — wholesale and retail bottle suppliers based in Azhar Colony, Kasur. Water, juices, soft drinks and glass bottles for shops and customers." />
+:root{
+  --ink: #1B1F1D;
+  --cream: #F6F3EC;
+  --paper: #FFFFFF;
+  --green-deep: #16332B;
+  --green-mid: #2F5D50;
+  --amber: #C97C2E;
+  --amber-soft: #F1D9BC;
+  --line: #E4DFD2;
+  --muted: #6B6F68;
+  --radius: 12px;
+  --shadow: 0 1px 2px rgba(22,51,43,0.06), 0 10px 24px rgba(22,51,43,0.08);
+}
 
-<!--
-  EDIT ME: Update the phone number, WhatsApp number, address and about text
-  below whenever they change. Search for "0300 0000000" and "Azhar Colony"
-  to find every place they appear.
--->
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; padding:0; background:var(--cream); color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif; line-height:1.55;
+}
+h1,h2,h3{font-family:'Fraunces',serif; font-weight:700; margin:0 0 12px; color:var(--green-deep);}
+h1{font-size:clamp(30px,5vw,46px); line-height:1.12;}
+h2{font-size:clamp(24px,3.4vw,32px);}
+h3{font-size:19px; margin-bottom:6px;}
+p{margin:0 0 12px; color:var(--ink);}
+a{color:inherit;}
+img{max-width:100%; display:block;}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+.wrap{max-width:1100px; margin:0 auto; padding:0 24px;}
+.eyebrow{
+  text-transform:uppercase; letter-spacing:.08em; font-size:12px; font-weight:600;
+  color:var(--amber); margin:0 0 10px;
+}
+.muted-note{color:var(--muted); font-size:13.5px;}
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a href="#top" class="brand">
-      <span class="brand-mark">HM</span>
-      <span class="brand-name">H.M Traders</span>
-    </a>
-    <nav class="nav" id="site-nav">
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="btn btn-amber header-cta" href="https://wa.me/923000000000" target="_blank" rel="noopener">WhatsApp Us</a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">☰</button>
-  </div>
-</header>
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-block; padding:12px 22px; border-radius:999px; font-weight:600;
+  text-decoration:none; font-size:15px;
+  transition:transform .15s ease, box-shadow .15s ease, background-color .2s ease, color .2s ease;
+}
+.btn-amber{background:var(--amber); color:#fff; box-shadow:var(--shadow);}
+.btn-amber:hover{transform:translateY(-2px);}
+.btn-outline{background:transparent; color:var(--green-deep); border:1.5px solid var(--green-deep);}
+.btn-outline:hover{background:var(--green-deep); color:#fff; transform:translateY(-2px);}
 
-<section class="hero" id="top">
-  <div class="wrap hero-inner">
-    <div class="hero-copy hero-enter">
-      <p class="eyebrow">Wholesale &amp; Retail · Kasur</p>
-      <h1>Bottled drinks for your shop, delivered reliably.</h1>
-      <p class="lede">H.M Traders supplies water, juices, soft drinks and glass bottles to shops and customers across Kasur — wholesale rates for retailers, friendly service for everyone.</p>
-      <div class="hero-actions">
-        <a class="btn btn-amber" href="tel:03000000000">Call Now</a>
-        <a class="btn btn-outline" href="https://wa.me/923000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
-      </div>
-    </div>
-    <div class="hero-art hero-enter hero-enter-delay" aria-hidden="true">
-      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="160" cy="160" r="150" fill="var(--amber-soft)"/>
-        <g transform="translate(70,50)">
-          <rect x="0" y="60" width="42" height="140" rx="8" fill="var(--green-mid)"/>
-          <rect x="10" y="30" width="22" height="34" rx="4" fill="var(--green-mid)"/>
-          <rect x="60" y="30" width="42" height="170" rx="8" fill="var(--amber)"/>
-          <rect x="70" y="0" width="22" height="34" rx="4" fill="var(--amber)"/>
-          <rect x="120" y="80" width="42" height="120" rx="8" fill="var(--green-deep)"/>
-          <rect x="130" y="50" width="22" height="34" rx="4" fill="var(--green-deep)"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky; top:0; z-index:20; background:rgba(246,243,236,0.92);
+  backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex; align-items:center; gap:18px; padding:14px 24px;}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+.brand-mark{
+  width:38px; height:38px; border-radius:10px; background:var(--amber); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif;
+  font-weight:700; font-size:15px;
+}
+.brand-name{font-family:'Fraunces',serif; font-weight:700; font-size:18px; color:var(--green-deep);}
+.nav{display:flex; gap:26px; margin-left:auto;}
+.nav a{text-decoration:none; font-weight:500; font-size:14.5px; color:var(--ink); position:relative; padding-bottom:3px;}
+.nav a::after{
+  content:''; position:absolute; left:0; right:100%; bottom:-2px; height:2px; background:var(--amber);
+  transition:right .25s ease;
+}
+.nav a:hover{color:var(--amber);}
+.nav a:hover::after{right:0;}
+.header-cta{margin-left:8px; padding:9px 18px; font-size:14px;}
+.nav-toggle{
+  display:none; margin-left:10px; background:none; border:none; font-size:22px;
+  cursor:pointer; color:var(--green-deep);
+}
+.site-header{transition:box-shadow .25s ease;}
+.site-header.scrolled{box-shadow:0 2px 12px rgba(22,51,43,0.08);}
 
-<section class="section" id="about">
-  <div class="wrap about-grid">
-    <div class="reveal">
-      <p class="eyebrow">About Us</p>
-      <h2>Trusted bottle supply, built on reliability.</h2>
-      <p>H.M Traders is a wholesale and retail bottle supplier based in Azhar Colony, Kasur. We stock a wide range of bottled water, juices, soft drinks and glass bottles, supplying local shopkeepers and customers with quality products at fair prices.</p>
-      <p>Whether you're restocking your shop or need bottles for an event, we keep our stock ready and our service straightforward.</p>
-    </div>
-    <ul class="stat-strip reveal reveal-delay">
-      <li><strong>Wholesale</strong><span>&amp; retail rates</span></li>
-      <li><strong>Local</strong><span>Kasur-based, fast service</span></li>
-      <li><strong>Wide range</strong><span>water · juice · soft drinks · glass</span></li>
-    </ul>
-  </div>
-</section>
+/* ---------- Hero ---------- */
+.hero{padding:64px 0 40px;}
+.hero-inner{display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:center;}
+.lede{font-size:17px; color:var(--muted); max-width:52ch;}
+.hero-actions{display:flex; gap:14px; margin-top:22px; flex-wrap:wrap;}
+.hero-art svg{width:100%; height:auto; max-width:320px; margin:0 auto; display:block; animation:float 4.5s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);}}
 
-<section class="section section-alt" id="products">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">What We Supply</p>
-      <h2>Our product range</h2>
-    </div>
-    <div class="card-grid reveal-stagger">
-      <div class="card">
-        <div class="card-icon">💧</div>
-        <h3>Mineral Water</h3>
-        <ul class="product-list">
-          <li>Nestlé Pure Life</li>
-          <li>Aquafina</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">🥤</div>
-        <h3>Soft Drinks</h3>
-        <ul class="product-list">
-          <li>7Up</li>
-          <li>Pepsi</li>
-          <li>Mountain Dew</li>
-          <li>Mirinda</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">🧃</div>
-        <h3>Juices</h3>
-        <ul class="product-list">
-          <li>Nestlé Fruita Vitals</li>
-          <li>Shezan</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">🍾</div>
-        <h3>Glass Bottles</h3>
-        <ul class="product-list">
-          <li>7Up Glass Bottle</li>
-          <li>Pepsi Glass Bottle</li>
-        </ul>
-      </div>
-    </div>
-    <p class="muted-note">Ask us for current stock and pricing — product availability changes regularly.</p>
-  </div>
-</section>
+/* ---------- Scroll / entrance animations ---------- */
+.hero-enter{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease;}
+.hero-enter.in{opacity:1; transform:translateY(0);}
+.hero-enter-delay{transition-delay:.15s;}
 
-<section class="section" id="why-us">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">Why H.M Traders</p>
-      <h2>Straightforward service, every order.</h2>
-    </div>
-    <div class="why-grid reveal-stagger">
-      <div class="why-item">
-        <h3>Fair wholesale pricing</h3>
-        <p>Competitive rates for shopkeepers buying in bulk.</p>
-      </div>
-      <div class="why-item">
-        <h3>Reliable stock</h3>
-        <p>We keep a steady supply so you're not left waiting.</p>
-      </div>
-      <div class="why-item">
-        <h3>Local &amp; responsive</h3>
-        <p>Based in Kasur — reach us by phone or WhatsApp and we'll respond quickly.</p>
-      </div>
-    </div>
-  </div>
-</section>
+.reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+.reveal-delay{transition-delay:.12s;}
 
-<section class="section section-alt" id="contact">
-  <div class="wrap contact-grid">
-    <div class="reveal">
-      <p class="eyebrow">Get In Touch</p>
-      <h2>Contact H.M Traders</h2>
-      <ul class="contact-list">
-        <li>
-          <span class="contact-label">Phone</span>
-          <a href="tel:03000000000">0300 0000000</a>
-        </li>
-        <li>
-          <span class="contact-label">WhatsApp</span>
-          <a href="https://wa.me/923000000000" target="_blank" rel="noopener">Message us on WhatsApp</a>
-        </li>
-        <li>
-          <span class="contact-label">Address</span>
-          <span>Azhar Colony, Kasur, Pakistan</span>
-        </li>
-      </ul>
-      <a class="btn btn-amber" href="https://wa.me/923000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
-    </div>
-    <div class="map-wrap reveal reveal-delay">
-      <iframe
-        title="H.M Traders location"
-        src="https://www.google.com/maps?q=Azhar+Colony,+Kasur,+Pakistan&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </div>
-</section>
+.reveal-stagger > *{opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease;}
+.reveal-stagger.in > *{opacity:1; transform:translateY(0);}
+.reveal-stagger.in > *:nth-child(1){transition-delay:.05s;}
+.reveal-stagger.in > *:nth-child(2){transition-delay:.12s;}
+.reveal-stagger.in > *:nth-child(3){transition-delay:.19s;}
+.reveal-stagger.in > *:nth-child(4){transition-delay:.26s;}
 
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <span>&copy; <span id="year"></span> H.M Traders, Kasur</span>
-    <span class="muted-note">Website by request — content updated as details change.</span>
-  </div>
-</footer>
+@media (prefers-reduced-motion: reduce){
+  .hero-art svg{animation:none;}
+  .hero-enter, .reveal, .reveal-stagger > *{opacity:1; transform:none; transition:none;}
+}
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('nav-toggle').addEventListener('click', () => {
-    document.getElementById('site-nav').classList.toggle('open');
-  });
+/* ---------- Sections ---------- */
+.section{padding:56px 0;}
+.section-alt{background:var(--paper);}
 
-  // Hero fades/slides in as soon as the page loads.
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.hero-enter').forEach((el) => el.classList.add('in'));
-  });
+.about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:start;}
+.stat-strip{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+.stat-strip li{
+  background:var(--paper); border-left:3px solid var(--amber); border-radius:var(--radius);
+  padding:14px 18px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:2px;
+}
+.stat-strip strong{font-family:'Fraunces',serif; color:var(--green-deep); font-size:16px;}
+.stat-strip span{color:var(--muted); font-size:13.5px;}
 
-  // Everything else animates in the first time it scrolls into view.
-  const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
-  if ('IntersectionObserver' in window && revealTargets.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealTargets.forEach((el) => observer.observe(el));
-  } else {
-    revealTargets.forEach((el) => el.classList.add('in'));
+.card-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:22px;}
+.card{
+  background:var(--cream); border-radius:var(--radius); padding:22px 18px;
+  border:1px solid var(--line); transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--amber-soft);}
+.card-icon{font-size:26px; margin-bottom:10px; transition:transform .2s ease;}
+.card:hover .card-icon{transform:scale(1.15) rotate(-4deg);}
+.card h3{font-size:16.5px;}
+.card p{font-size:13.5px; color:var(--muted); margin:0;}
+.product-list{list-style:none; margin:0; padding:0; font-size:13.5px; color:var(--muted);}
+.product-list li{padding:5px 0; border-top:1px solid var(--line);}
+.product-list li:first-child{border-top:none;}
+
+.why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:22px;}
+.why-item{border-top:3px solid var(--amber); padding-top:14px; transition:transform .2s ease;}
+.why-item:hover{transform:translateY(-3px);}
+.why-item p{color:var(--muted); font-size:14px;}
+
+.faq-list{max-width:760px; margin-top:22px; display:flex; flex-direction:column; gap:10px;}
+.faq-list details{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:4px 18px; transition:border-color .2s ease;
+}
+.faq-list details[open]{border-color:var(--amber-soft);}
+.faq-list summary{
+  padding:14px 0; cursor:pointer; font-weight:600; color:var(--green-deep);
+  list-style:none; display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.faq-list summary::-webkit-details-marker{display:none;}
+.faq-list summary::after{
+  content:'+'; font-size:20px; color:var(--amber); flex-shrink:0; transition:transform .2s ease;
+}
+.faq-list details[open] summary::after{transform:rotate(45deg);}
+.faq-list details p{padding-bottom:16px; margin:0; color:var(--muted); font-size:14.5px;}
+
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;}
+.contact-list{list-style:none; margin:0 0 22px; padding:0; display:flex; flex-direction:column; gap:14px;}
+.contact-list li{
+  display:flex; flex-direction:column; gap:2px; background:var(--cream);
+  border-radius:var(--radius); padding:12px 16px; border:1px solid var(--line);
+  transition:border-color .2s ease, transform .2s ease;
+}
+.contact-list li:hover{border-color:var(--amber); transform:translateX(3px);}
+.contact-btns{display:flex; gap:12px; flex-wrap:wrap;}
+.contact-label{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--amber); font-weight:600;}
+.contact-list a{color:var(--green-deep); font-weight:600; text-decoration:none;}
+.contact-list a:hover{text-decoration:underline;}
+.map-wrap{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); min-height:280px;}
+.map-wrap iframe{width:100%; height:100%; min-height:280px; border:0;}
+
+/* ---------- Footer ---------- */
+.site-footer{border-top:1px solid var(--line); padding:22px 0; background:var(--paper);}
+.footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; font-size:13.5px; color:var(--muted);}
+
+/* ---------- Floating WhatsApp button ---------- */
+.whatsapp-float{
+  position:fixed; right:20px; bottom:20px; z-index:40; width:56px; height:56px; border-radius:50%;
+  background:#25D366; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,0.25); transition:transform .2s ease;
+}
+.whatsapp-float:hover{transform:scale(1.08);}
+.whatsapp-float svg{width:30px; height:30px;}
+
+/* ---------- Mobile call/WhatsApp bar ---------- */
+.mobile-bar{display:none;}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px){
+  .hero-inner, .about-grid, .contact-grid{grid-template-columns:1fr;}
+  .hero-art{order:-1; max-width:220px; margin:0 auto;}
+  .card-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid{grid-template-columns:1fr;}
+}
+
+@media (max-width: 640px){
+  .nav{
+    position:absolute; top:100%; left:0; right:0; background:var(--paper);
+    flex-direction:column; padding:16px 24px; gap:14px; border-bottom:1px solid var(--line);
+    display:none;
   }
+  .nav.open{display:flex;}
+  .nav-toggle{display:block;}
+  .header-cta{display:none;}
+  .card-grid{grid-template-columns:1fr 1fr;}
 
-  // Header picks up a soft shadow once the page has scrolled a little.
-  const header = document.querySelector('.site-header');
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>H.M Traders — Wholesale &amp; Retail Bottle Suppliers, Kasur</title>
-<meta name="description" content="H.M Traders — wholesale and retail bottle suppliers based in Azhar Colony, Kasur. Water, juices, soft drinks and glass bottles for shops and customers." />
-
-<!--
-  EDIT ME: Update the phone number, WhatsApp number, address and about text
-  below whenever they change. Search for "0300 0000000" and "Azhar Colony"
-  to find every place they appear.
--->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a href="#top" class="brand">
-      <span class="brand-mark">HM</span>
-      <span class="brand-name">H.M Traders</span>
-    </a>
-    <nav class="nav" id="site-nav">
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="btn btn-amber header-cta" href="https://wa.me/923000000000" target="_blank" rel="noopener">WhatsApp Us</a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">☰</button>
-  </div>
-</header>
-
-<section class="hero" id="top">
-  <div class="wrap hero-inner">
-    <div class="hero-copy hero-enter">
-      <p class="eyebrow">Wholesale &amp; Retail · Kasur</p>
-      <h1>Bottled drinks for your shop, delivered reliably.</h1>
-      <p class="lede">H.M Traders supplies water, juices, soft drinks and glass bottles to shops and customers across Kasur — wholesale rates for retailers, friendly service for everyone.</p>
-      <div class="hero-actions">
-        <a class="btn btn-amber" href="tel:03000000000">Call Now</a>
-        <a class="btn btn-outline" href="https://wa.me/923000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
-      </div>
-    </div>
-    <div class="hero-art hero-enter hero-enter-delay" aria-hidden="true">
-      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="160" cy="160" r="150" fill="var(--amber-soft)"/>
-        <g transform="translate(70,50)">
-          <rect x="0" y="60" width="42" height="140" rx="8" fill="var(--green-mid)"/>
-          <rect x="10" y="30" width="22" height="34" rx="4" fill="var(--green-mid)"/>
-          <rect x="60" y="30" width="42" height="170" rx="8" fill="var(--amber)"/>
-          <rect x="70" y="0" width="22" height="34" rx="4" fill="var(--amber)"/>
-          <rect x="120" y="80" width="42" height="120" rx="8" fill="var(--green-deep)"/>
-          <rect x="130" y="50" width="22" height="34" rx="4" fill="var(--green-deep)"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="about">
-  <div class="wrap about-grid">
-    <div class="reveal">
-      <p class="eyebrow">About Us</p>
-      <h2>Trusted bottle supply, built on reliability.</h2>
-      <p>H.M Traders is a wholesale and retail bottle supplier based in Azhar Colony, Kasur. We stock a wide range of bottled water, juices, soft drinks and glass bottles, supplying local shopkeepers and customers with quality products at fair prices.</p>
-      <p>Whether you're restocking your shop or need bottles for an event, we keep our stock ready and our service straightforward.</p>
-    </div>
-    <ul class="stat-strip reveal reveal-delay">
-      <li><strong>Wholesale</strong><span>&amp; retail rates</span></li>
-      <li><strong>Local</strong><span>Kasur-based, fast service</span></li>
-      <li><strong>Wide range</strong><span>water · juice · soft drinks · glass</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="section section-alt" id="products">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">What We Supply</p>
-      <h2>Our product range</h2>
-    </div>
-    <div class="card-grid reveal-stagger">
-      <div class="card">
-        <div class="card-icon">💧</div>
-        <h3>Mineral Water</h3>
-        <ul class="product-list">
-          <li>Nestlé Pure Life</li>
-          <li>Aquafina</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">🥤</div>
-        <h3>Soft Drinks</h3>
-        <ul class="product-list">
-          <li>7Up</li>
-          <li>Pepsi</li>
-          <li>Mountain Dew</li>
-          <li>Mirinda</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">🧃</div>
-        <h3>Juices</h3>
-        <ul class="product-list">
-          <li>Nestlé Fruita Vitals</li>
-          <li>Shezan</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">🍾</div>
-        <h3>Glass Bottles</h3>
-        <ul class="product-list">
-          <li>7Up Glass Bottle</li>
-          <li>Pepsi Glass Bottle</li>
-        </ul>
-      </div>
-    </div>
-    <p class="muted-note">Ask us for current stock and pricing — product availability changes regularly.</p>
-  </div>
-</section>
-
-<section class="section" id="why-us">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">Why H.M Traders</p>
-      <h2>Straightforward service, every order.</h2>
-    </div>
-    <div class="why-grid reveal-stagger">
-      <div class="why-item">
-        <h3>Fair wholesale pricing</h3>
-        <p>Competitive rates for shopkeepers buying in bulk.</p>
-      </div>
-      <div class="why-item">
-        <h3>Reliable stock</h3>
-        <p>We keep a steady supply so you're not left waiting.</p>
-      </div>
-      <div class="why-item">
-        <h3>Local &amp; responsive</h3>
-        <p>Based in Kasur — reach us by phone or WhatsApp and we'll respond quickly.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt" id="contact">
-  <div class="wrap contact-grid">
-    <div class="reveal">
-      <p class="eyebrow">Get In Touch</p>
-      <h2>Contact H.M Traders</h2>
-      <ul class="contact-list">
-        <li>
-          <span class="contact-label">Phone</span>
-          <a href="tel:03000000000">0300 0000000</a>
-        </li>
-        <li>
-          <span class="contact-label">WhatsApp</span>
-          <a href="https://wa.me/923000000000" target="_blank" rel="noopener">Message us on WhatsApp</a>
-        </li>
-        <li>
-          <span class="contact-label">Address</span>
-          <span>Azhar Colony, Kasur, Pakistan</span>
-        </li>
-      </ul>
-      <a class="btn btn-amber" href="https://wa.me/923000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
-    </div>
-    <div class="map-wrap reveal reveal-delay">
-      <iframe
-        title="H.M Traders location"
-        src="https://www.google.com/maps?q=Azhar+Colony,+Kasur,+Pakistan&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <span>&copy; <span id="year"></span> H.M Traders, Kasur</span>
-    <span class="muted-note">Website by request — content updated as details change.</span>
-  </div>
-</footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('nav-toggle').addEventListener('click', () => {
-    document.getElementById('site-nav').classList.toggle('open');
-  });
-
-  // Hero fades/slides in as soon as the page loads.
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.hero-enter').forEach((el) => el.classList.add('in'));
-  });
-
-  // Everything else animates in the first time it scrolls into view.
-  const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
-  if ('IntersectionObserver' in window && revealTargets.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealTargets.forEach((el) => observer.observe(el));
-  } else {
-    revealTargets.forEach((el) => el.classList.add('in'));
+  body{padding-bottom:64px;}
+  .mobile-bar{
+    display:flex; position:fixed; left:0; right:0; bottom:0; z-index:40;
+    border-top:1px solid var(--line); box-shadow:0 -2px 10px rgba(22,51,43,0.08);
   }
-
-  // Header picks up a soft shadow once the page has scrolled a little.
-  const header = document.querySelector('.site-header');
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>H.M Traders — Wholesale &amp; Retail Bottle Suppliers, Kasur</title>
-<meta name="description" content="H.M Traders — wholesale and retail bottle suppliers based in Azhar Colony, Kasur. Water, juices, soft drinks and glass bottles for shops and customers." />
-
-<!--
-  EDIT ME: Update the phone number, WhatsApp number, address and about text
-  below whenever they change. Search for "0300 0000000" and "Azhar Colony"
-  to find every place they appear.
--->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a href="#top" class="brand">
-      <span class="brand-mark">HM</span>
-      <span class="brand-name">H.M Traders</span>
-    </a>
-    <nav class="nav" id="site-nav">
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="btn btn-amber header-cta" href="https://wa.me/923000000000" target="_blank" rel="noopener">WhatsApp Us</a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">☰</button>
-  </div>
-</header>
-
-<section class="hero" id="top">
-  <div class="wrap hero-inner">
-    <div class="hero-copy hero-enter">
-      <p class="eyebrow">Wholesale &amp; Retail · Kasur</p>
-      <h1>Bottled drinks for your shop, delivered reliably.</h1>
-      <p class="lede">H.M Traders supplies water, juices, soft drinks and glass bottles to shops and customers across Kasur — wholesale rates for retailers, friendly service for everyone.</p>
-      <div class="hero-actions">
-        <a class="btn btn-amber" href="tel:03000000000">Call Now</a>
-        <a class="btn btn-outline" href="https://wa.me/923000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
-      </div>
-    </div>
-    <div class="hero-art hero-enter hero-enter-delay" aria-hidden="true">
-      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="160" cy="160" r="150" fill="var(--amber-soft)"/>
-        <g transform="translate(70,50)">
-          <rect x="0" y="60" width="42" height="140" rx="8" fill="var(--green-mid)"/>
-          <rect x="10" y="30" width="22" height="34" rx="4" fill="var(--green-mid)"/>
-          <rect x="60" y="30" width="42" height="170" rx="8" fill="var(--amber)"/>
-          <rect x="70" y="0" width="22" height="34" rx="4" fill="var(--amber)"/>
-          <rect x="120" y="80" width="42" height="120" rx="8" fill="var(--green-deep)"/>
-          <rect x="130" y="50" width="22" height="34" rx="4" fill="var(--green-deep)"/>
-        </g>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="about">
-  <div class="wrap about-grid">
-    <div class="reveal">
-      <p class="eyebrow">About Us</p>
-      <h2>Trusted bottle supply, built on reliability.</h2>
-      <p>H.M Traders is a wholesale and retail bottle supplier based in Azhar Colony, Kasur. We stock a wide range of bottled water, juices, soft drinks and glass bottles, supplying local shopkeepers and customers with quality products at fair prices.</p>
-      <p>Whether you're restocking your shop or need bottles for an event, we keep our stock ready and our service straightforward.</p>
-    </div>
-    <ul class="stat-strip reveal reveal-delay">
-      <li><strong>Wholesale</strong><span>&amp; retail rates</span></li>
-      <li><strong>Local</strong><span>Kasur-based, fast service</span></li>
-      <li><strong>Wide range</strong><span>water · juice · soft drinks · glass</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="section section-alt" id="products">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">What We Supply</p>
-      <h2>Our product range</h2>
-    </div>
-    <div class="card-grid reveal-stagger">
-      <div class="card">
-        <div class="card-icon">💧</div>
-        <h3>Mineral Water</h3>
-        <ul class="product-list">
-          <li>Nestlé Pure Life</li>
-          <li>Aquafina</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">🥤</div>
-        <h3>Soft Drinks</h3>
-        <ul class="product-list">
-          <li>7Up</li>
-          <li>Pepsi</li>
-          <li>Mountain Dew</li>
-          <li>Mirinda</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">🧃</div>
-        <h3>Juices</h3>
-        <ul class="product-list">
-          <li>Nestlé Fruita Vitals</li>
-          <li>Shezan</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="card-icon">🍾</div>
-        <h3>Glass Bottles</h3>
-        <ul class="product-list">
-          <li>7Up Glass Bottle</li>
-          <li>Pepsi Glass Bottle</li>
-        </ul>
-      </div>
-    </div>
-    <p class="muted-note">Ask us for current stock and pricing — product availability changes regularly.</p>
-  </div>
-</section>
-
-<section class="section" id="why-us">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">Why H.M Traders</p>
-      <h2>Straightforward service, every order.</h2>
-    </div>
-    <div class="why-grid reveal-stagger">
-      <div class="why-item">
-        <h3>Fair wholesale pricing</h3>
-        <p>Competitive rates for shopkeepers buying in bulk.</p>
-      </div>
-      <div class="why-item">
-        <h3>Reliable stock</h3>
-        <p>We keep a steady supply so you're not left waiting.</p>
-      </div>
-      <div class="why-item">
-        <h3>Local &amp; responsive</h3>
-        <p>Based in Kasur — reach us by phone or WhatsApp and we'll respond quickly.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt" id="contact">
-  <div class="wrap contact-grid">
-    <div class="reveal">
-      <p class="eyebrow">Get In Touch</p>
-      <h2>Contact H.M Traders</h2>
-      <ul class="contact-list">
-        <li>
-          <span class="contact-label">Phone</span>
-          <a href="tel:03000000000">0300 0000000</a>
-        </li>
-        <li>
-          <span class="contact-label">WhatsApp</span>
-          <a href="https://wa.me/923000000000" target="_blank" rel="noopener">Message us on WhatsApp</a>
-        </li>
-        <li>
-          <span class="contact-label">Address</span>
-          <span>Azhar Colony, Kasur, Pakistan</span>
-        </li>
-      </ul>
-      <a class="btn btn-amber" href="https://wa.me/923000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
-    </div>
-    <div class="map-wrap reveal reveal-delay">
-      <iframe
-        title="H.M Traders location"
-        src="https://www.google.com/maps?q=Azhar+Colony,+Kasur,+Pakistan&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <span>&copy; <span id="year"></span> H.M Traders, Kasur</span>
-    <span class="muted-note">Website by request — content updated as details change.</span>
-  </div>
-</footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('nav-toggle').addEventListener('click', () => {
-    document.getElementById('site-nav').classList.toggle('open');
-  });
-
-  // Hero fades/slides in as soon as the page loads.
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.hero-enter').forEach((el) => el.classList.add('in'));
-  });
-
-  // Everything else animates in the first time it scrolls into view.
-  const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
-  if ('IntersectionObserver' in window && revealTargets.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealTargets.forEach((el) => observer.observe(el));
-  } else {
-    revealTargets.forEach((el) => el.classList.add('in'));
+  .mobile-bar-btn{
+    flex:1; text-align:center; padding:15px 0; font-weight:600; font-size:14.5px; text-decoration:none;
   }
-
-  // Header picks up a soft shadow once the page has scrolled a little.
-  const header = document.querySelector('.site-header');
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-</script>
-</body>
-</html>
+  .mobile-bar-btn.call{background:var(--paper); color:var(--green-deep);}
+  .mobile-bar-btn.whatsapp{background:#25D366; color:#fff;}
+  .whatsapp-float{display:none;} /* the bottom bar already covers Call + WhatsApp here */
+}
