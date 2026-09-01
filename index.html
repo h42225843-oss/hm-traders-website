@@ -38,7 +38,7 @@
 
 <section class="hero" id="top">
   <div class="wrap hero-inner">
-    <div class="hero-copy">
+    <div class="hero-copy hero-enter">
       <p class="eyebrow">Wholesale &amp; Retail · Kasur</p>
       <h1>Bottled drinks for your shop, delivered reliably.</h1>
       <p class="lede">H.M Traders supplies water, juices, soft drinks and glass bottles to shops and customers across Kasur — wholesale rates for retailers, friendly service for everyone.</p>
@@ -47,7 +47,7 @@
         <a class="btn btn-outline" href="https://wa.me/923000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
       </div>
     </div>
-    <div class="hero-art" aria-hidden="true">
+    <div class="hero-art hero-enter hero-enter-delay" aria-hidden="true">
       <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
         <circle cx="160" cy="160" r="150" fill="var(--amber-soft)"/>
         <g transform="translate(70,50)">
@@ -65,13 +65,13 @@
 
 <section class="section" id="about">
   <div class="wrap about-grid">
-    <div>
+    <div class="reveal">
       <p class="eyebrow">About Us</p>
       <h2>Trusted bottle supply, built on reliability.</h2>
       <p>H.M Traders is a wholesale and retail bottle supplier based in Azhar Colony, Kasur. We stock a wide range of bottled water, juices, soft drinks and glass bottles, supplying local shopkeepers and customers with quality products at fair prices.</p>
       <p>Whether you're restocking your shop or need bottles for an event, we keep our stock ready and our service straightforward.</p>
     </div>
-    <ul class="stat-strip">
+    <ul class="stat-strip reveal reveal-delay">
       <li><strong>Wholesale</strong><span>&amp; retail rates</span></li>
       <li><strong>Local</strong><span>Kasur-based, fast service</span></li>
       <li><strong>Wide range</strong><span>water · juice · soft drinks · glass</span></li>
@@ -81,9 +81,11 @@
 
 <section class="section section-alt" id="products">
   <div class="wrap">
-    <p class="eyebrow">What We Supply</p>
-    <h2>Our product range</h2>
-    <div class="card-grid">
+    <div class="reveal">
+      <p class="eyebrow">What We Supply</p>
+      <h2>Our product range</h2>
+    </div>
+    <div class="card-grid reveal-stagger">
       <div class="card">
         <div class="card-icon">💧</div>
         <h3>Mineral Water</h3>
@@ -125,9 +127,11 @@
 
 <section class="section" id="why-us">
   <div class="wrap">
-    <p class="eyebrow">Why H.M Traders</p>
-    <h2>Straightforward service, every order.</h2>
-    <div class="why-grid">
+    <div class="reveal">
+      <p class="eyebrow">Why H.M Traders</p>
+      <h2>Straightforward service, every order.</h2>
+    </div>
+    <div class="why-grid reveal-stagger">
       <div class="why-item">
         <h3>Fair wholesale pricing</h3>
         <p>Competitive rates for shopkeepers buying in bulk.</p>
@@ -146,7 +150,7 @@
 
 <section class="section section-alt" id="contact">
   <div class="wrap contact-grid">
-    <div>
+    <div class="reveal">
       <p class="eyebrow">Get In Touch</p>
       <h2>Contact H.M Traders</h2>
       <ul class="contact-list">
@@ -165,7 +169,7 @@
       </ul>
       <a class="btn btn-amber" href="https://wa.me/923000000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
     </div>
-    <div class="map-wrap">
+    <div class="map-wrap reveal reveal-delay">
       <iframe
         title="H.M Traders location"
         src="https://www.google.com/maps?q=Azhar+Colony,+Kasur,+Pakistan&output=embed"
@@ -188,6 +192,33 @@
   document.getElementById('nav-toggle').addEventListener('click', () => {
     document.getElementById('site-nav').classList.toggle('open');
   });
+
+  // Hero fades/slides in as soon as the page loads.
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.hero-enter').forEach((el) => el.classList.add('in'));
+  });
+
+  // Everything else animates in the first time it scrolls into view.
+  const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
+  if ('IntersectionObserver' in window && revealTargets.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealTargets.forEach((el) => observer.observe(el));
+  } else {
+    revealTargets.forEach((el) => el.classList.add('in'));
+  }
+
+  // Header picks up a soft shadow once the page has scrolled a little.
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 </script>
 </body>
 </html>
