@@ -122,16 +122,30 @@
       <p class="eyebrow">What We Supply</p>
       <h2>Our product range</h2>
     </div>
+    <div class="product-toolbar reveal">
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input type="text" id="productSearch" class="search-input" placeholder="Search a brand, e.g. Pepsi" aria-label="Search products" />
+      </div>
+      <div class="filter-pills" id="filterPills">
+        <button type="button" class="pill active" data-filter="all">All</button>
+        <button type="button" class="pill" data-filter="Mineral Water">Mineral Water</button>
+        <button type="button" class="pill" data-filter="Soft Drinks">Soft Drinks</button>
+        <button type="button" class="pill" data-filter="Juices">Juices</button>
+        <button type="button" class="pill" data-filter="Glass Bottles">Glass Bottles</button>
+      </div>
+    </div>
     <div class="card-grid reveal-stagger">
-      <div class="card">
+      <div class="card" data-category="Mineral Water">
         <div class="card-icon">💧</div>
         <h3>Mineral Water</h3>
         <ul class="product-list">
           <li>Nestlé Pure Life</li>
           <li>Aquafina</li>
+          <li>Kinley</li>
         </ul>
       </div>
-      <div class="card">
+      <div class="card" data-category="Soft Drinks">
         <span class="card-badge">Popular</span>
         <div class="card-icon">🥤</div>
         <h3>Soft Drinks</h3>
@@ -140,25 +154,29 @@
           <li>Pepsi</li>
           <li>Mountain Dew</li>
           <li>Mirinda</li>
+          <li>Sting</li>
         </ul>
       </div>
-      <div class="card">
+      <div class="card" data-category="Juices">
         <div class="card-icon">🧃</div>
         <h3>Juices</h3>
         <ul class="product-list">
           <li>Nestlé Fruita Vitals</li>
           <li>Shezan</li>
+          <li>Slice</li>
         </ul>
       </div>
-      <div class="card">
+      <div class="card" data-category="Glass Bottles">
         <div class="card-icon">🍾</div>
         <h3>Glass Bottles</h3>
         <ul class="product-list">
           <li>7Up Glass Bottle</li>
           <li>Pepsi Glass Bottle</li>
+          <li>Mirinda Glass Bottle</li>
         </ul>
       </div>
     </div>
+    <p class="muted-note" id="noResults" hidden>No matching products — try a different name, or WhatsApp us, we probably still stock it.</p>
     <p class="muted-note">Wholesale rates available — ask us for current stock and pricing.</p>
   </div>
 </section>
@@ -300,6 +318,43 @@
   const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Product search + category filter.
+  const productSearch = document.getElementById('productSearch');
+  const filterPills = document.querySelectorAll('#filterPills .pill');
+  const productCards = document.querySelectorAll('#products .card');
+  const noResults = document.getElementById('noResults');
+  let activeCategory = 'all';
+
+  function applyProductFilter() {
+    const query = productSearch.value.trim().toLowerCase();
+    let anyVisible = false;
+    productCards.forEach((card) => {
+      const categoryMatch = activeCategory === 'all' || card.dataset.category === activeCategory;
+      let itemMatch = query === '';
+      card.querySelectorAll('.product-list li').forEach((item) => {
+        const hit = query === '' || item.textContent.toLowerCase().includes(query);
+        item.style.display = hit ? '' : 'none';
+        if (hit) itemMatch = true;
+      });
+      const visible = categoryMatch && itemMatch;
+      card.style.display = visible ? '' : 'none';
+      if (visible) anyVisible = true;
+    });
+    noResults.hidden = anyVisible;
+  }
+
+  if (productSearch) {
+    productSearch.addEventListener('input', applyProductFilter);
+    filterPills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeCategory = pill.dataset.filter;
+        applyProductFilter();
+      });
+    });
+  }
 </script>
 </body>
 </html>
