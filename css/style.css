@@ -136,6 +136,30 @@ img{max-width:100%; display:block;}
 .stat-strip strong{font-family:'Fraunces',serif; color:var(--green-deep); font-size:16px;}
 .stat-strip span{color:var(--muted); font-size:13.5px;}
 
+.product-toolbar{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:14px; margin-top:22px;
+}
+.search-wrap{position:relative; flex:1; min-width:220px; max-width:340px;}
+.search-icon{
+  position:absolute; left:14px; top:50%; transform:translateY(-50%); font-size:13px; pointer-events:none;
+}
+.search-input{
+  width:100%; padding:10px 14px 10px 36px; border-radius:999px; border:1px solid var(--line);
+  background:var(--paper); font-family:'Inter',system-ui,sans-serif; font-size:14px; color:var(--ink);
+  outline:none; transition:border-color .2s ease, box-shadow .2s ease;
+}
+.search-input::placeholder{color:var(--muted);}
+.search-input:focus{border-color:var(--amber); box-shadow:0 0 0 3px var(--amber-soft);}
+.filter-pills{display:flex; flex-wrap:wrap; gap:8px;}
+.pill{
+  border:1px solid var(--line); background:var(--paper); color:var(--ink); font-size:13px; font-weight:600;
+  padding:7px 14px; border-radius:999px; cursor:pointer;
+  transition:background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.pill:hover{border-color:var(--amber);}
+.pill.active{background:var(--green-deep); border-color:var(--green-deep); color:#fff;}
+
 .card-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:22px;}
 .card{
   position:relative; background:var(--cream); border-radius:var(--radius); padding:22px 18px;
