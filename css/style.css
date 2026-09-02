@@ -48,7 +48,7 @@ img{max-width:100%; display:block;}
 .announce-bar{background:var(--amber); color:var(--green-deep); overflow:hidden; white-space:nowrap;}
 .announce-track{
   display:inline-flex; gap:10px; padding:9px 0; font-size:13px; font-weight:600;
-  animation:marquee 22s linear infinite;
+  animation:marquee 18s linear infinite;
 }
 .announce-track span{padding:0 4px;}
 @keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
