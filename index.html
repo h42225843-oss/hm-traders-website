@@ -43,6 +43,24 @@
     <span>•</span>
     <span>Chat with us on WhatsApp anytime</span>
     <span>•</span>
+    <span>Available at wholesale prices</span>
+    <span>•</span>
+    <span>Local delivery across Kasur</span>
+    <span>•</span>
+    <span>Chat with us on WhatsApp anytime</span>
+    <span>•</span>
+    <span>Available at wholesale prices</span>
+    <span>•</span>
+    <span>Local delivery across Kasur</span>
+    <span>•</span>
+    <span>Chat with us on WhatsApp anytime</span>
+    <span>•</span>
+    <span>Available at wholesale prices</span>
+    <span>•</span>
+    <span>Local delivery across Kasur</span>
+    <span>•</span>
+    <span>Chat with us on WhatsApp anytime</span>
+    <span>•</span>
   </div>
 </div>
 
@@ -285,122 +303,3 @@
   <a class="mobile-bar-btn call" href="tel:03000000000">Call</a>
   <a class="mobile-bar-btn whatsapp" href="https://wa.me/923000000000" target="_blank" rel="noopener">WhatsApp</a>
 </div>
-
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <span>&copy; <span id="year"></span> H.M Traders, Kasur</span>
-    <span class="muted-note">Website by request — content updated as details change.</span>
-  </div>
-</footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('nav-toggle').addEventListener('click', () => {
-    document.getElementById('site-nav').classList.toggle('open');
-  });
-
-  // Hero fades/slides in as soon as the page loads.
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.hero-enter').forEach((el) => el.classList.add('in'));
-  });
-
-  // Everything else animates in the first time it scrolls into view.
-  const revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
-  if ('IntersectionObserver' in window && revealTargets.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealTargets.forEach((el) => observer.observe(el));
-  } else {
-    revealTargets.forEach((el) => el.classList.add('in'));
-  }
-
-  // Header picks up a soft shadow once the page has scrolled a little.
-  const header = document.querySelector('.site-header');
-  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  // Product search + category filter.
-  const productSearch = document.getElementById('productSearch');
-  const filterPills = document.querySelectorAll('#filterPills .pill');
-  const productCards = document.querySelectorAll('#products .card');
-  const noResults = document.getElementById('noResults');
-  let activeCategory = 'all';
-
-  function applyProductFilter() {
-    const query = productSearch.value.trim().toLowerCase();
-    let anyVisible = false;
-    productCards.forEach((card) => {
-      const categoryMatch = activeCategory === 'all' || card.dataset.category === activeCategory;
-      let itemMatch = query === '';
-      card.querySelectorAll('.product-list li').forEach((item) => {
-        const hit = query === '' || item.textContent.toLowerCase().includes(query);
-        item.style.display = hit ? '' : 'none';
-        if (hit) itemMatch = true;
-      });
-      const visible = categoryMatch && itemMatch;
-      card.style.display = visible ? '' : 'none';
-      if (visible) anyVisible = true;
-    });
-    noResults.hidden = anyVisible;
-  }
-
-  if (productSearch) {
-    productSearch.addEventListener('input', applyProductFilter);
-    filterPills.forEach((pill) => {
-      pill.addEventListener('click', () => {
-        filterPills.forEach((p) => p.classList.remove('active'));
-        pill.classList.add('active');
-        activeCategory = pill.dataset.filter;
-        applyProductFilter();
-      });
-    });
-  }
-
-  // Small toast message, used by the Share button.
-  let toastTimer;
-  function showToast(message) {
-    let toast = document.getElementById('toast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.id = 'toast';
-      toast.className = 'toast';
-      document.body.appendChild(toast);
-    }
-    toast.textContent = message;
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
-  }
-
-  // Share button: uses the phone's native share sheet where available,
-  // otherwise copies the page link to the clipboard.
-  const shareBtn = document.getElementById('shareBtn');
-  if (shareBtn) {
-    shareBtn.addEventListener('click', async () => {
-      const shareData = {
-        title: 'H.M Traders',
-        text: 'H.M Traders — wholesale & retail bottle supplier, Kasur.',
-        url: window.location.href,
-      };
-      if (navigator.share) {
-        try { await navigator.share(shareData); } catch (e) { /* user cancelled */ }
-        return;
-      }
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        showToast('Link copied — paste it anywhere to share.');
-      } catch (e) {
-        showToast('Copy this page\'s link from your browser bar to share it.');
-      }
-    });
-  }
-</script>
-</body>
-</html>
