@@ -52,7 +52,6 @@ img{max-width:100%; display:block;}
 }
 .announce-track span{padding:0 4px;}
 @keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
-@media (prefers-reduced-motion: reduce){.announce-track{animation:none;}}
 
 /* ---------- Trust badges ---------- */
 .trust-bar{background:var(--paper); border-bottom:1px solid var(--line);}
